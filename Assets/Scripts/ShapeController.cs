@@ -11,14 +11,7 @@ public class ShapeController : MonoBehaviour
     private GameObject sphere;
     private GameObject capsule;
 
-    private enum Shape
-    {
-        Cube,
-        Sphere,
-        Capsule
-    }
-
-    private Shape currentShape;
+    private UIController.ShapeOption currentShape;
 
 	void Start () 
     {
@@ -28,7 +21,7 @@ public class ShapeController : MonoBehaviour
         sphere = GameObject.Find("Sphere");
         capsule = GameObject.Find("Capsule");
 
-        currentShape = Shape.Cube;
+        currentShape = UIController.ShapeOption.Cube;
 
         sphere.SetActive(false);
         capsule.SetActive(false);
@@ -37,35 +30,35 @@ public class ShapeController : MonoBehaviour
 	void Update () 
     {
         var selectedShape = uiController.Shape;
-        if (selectedShape != Convert.ToInt32(currentShape))
+        if (selectedShape != currentShape)
         {
-            if (currentShape == Shape.Cube)
+            if (currentShape == UIController.ShapeOption.Cube)
             {
                 cube.SetActive(false);
             }
-            else if (currentShape == Shape.Sphere)
+            else if (currentShape == UIController.ShapeOption.Sphere)
             {
                 sphere.SetActive(false);
             }
-            else if (currentShape == Shape.Capsule)
+            else if (currentShape == UIController.ShapeOption.Capsule)
             {
                 capsule.SetActive(false);
             }
 
-            if (selectedShape == Convert.ToInt32(Shape.Cube))
+            if (selectedShape == UIController.ShapeOption.Cube)
             {
                 cube.SetActive(true);
             }
-            else if (selectedShape == Convert.ToInt32(Shape.Sphere))
+            else if (selectedShape == UIController.ShapeOption.Sphere)
             {
                 sphere.SetActive(true);
             }
-            else if (selectedShape == Convert.ToInt32(Shape.Capsule))
+            else if (selectedShape == UIController.ShapeOption.Capsule)
             {
                 capsule.SetActive(true);
             }
 
-            currentShape = (Shape)selectedShape;
+            currentShape = selectedShape;
         }
 	}
 }

@@ -26,6 +26,13 @@ public class UIController : MonoBehaviour
     // shape
     private Dropdown shapeDropdown;
 
+    public enum ShapeOption
+    {
+        Cube,
+        Sphere,
+        Capsule
+    }
+
     public Vector3 Position
     {
         get { return new Vector3(xPositionSlider.value, yPositionSlider.value, zPositionSlider.value); }
@@ -60,9 +67,23 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public int Shape
+    public ShapeOption Shape
     {
-        get { return shapeDropdown.value; }
+        get 
+        { 
+            if (shapeDropdown.value == 0)
+            {
+                return ShapeOption.Cube;
+            }
+            else if (shapeDropdown.value == 1)
+            {
+                return ShapeOption.Sphere;
+            }
+            else
+            {
+                return ShapeOption.Capsule;
+            }
+        }
     }
 
 	void Start () 
