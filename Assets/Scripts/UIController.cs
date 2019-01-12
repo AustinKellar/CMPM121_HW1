@@ -41,9 +41,23 @@ public class UIController : MonoBehaviour
         get { return new Vector3(xScaleSlider.value, yScaleSlider.value, zScaleSlider.value); }
     }
 
-    public int Color 
+    public Color Color 
     {
-        get { return colorDropdown.value; }
+        get 
+        { 
+            if (colorDropdown.value == 0)
+            {
+                return Color.blue;
+            }
+            else if (colorDropdown.value == 1)
+            {
+                return Color.red;
+            }
+            else
+            {
+                return Color.green;
+            }
+        }
     }
 
     public int Shape

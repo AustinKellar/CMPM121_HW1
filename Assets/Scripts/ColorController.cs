@@ -6,33 +6,33 @@ using UnityEngine;
 public class ColorController : MonoBehaviour {
     private UIController uiController;
     private Renderer rend;
-
-    private enum DropdownColor
-    {
-        Blue,
-        Red,
-        Green
-    }
+    private Color currentColor;
 
 	void Start () 
     {
         uiController = GameObject.Find("UIController").GetComponent<UIController>();
-        rend = GetComponent<Renderer>();	
+        rend = GetComponent<Renderer>();
+        currentColor = Color.blue;
+        rend.material.color = Color.blue;
 	}
 	
 	void Update () 
     {
-        if (uiController.Color == Convert.ToInt32(DropdownColor.Blue) && rend.material.color != Color.blue)
+        if (uiController.Color != currentColor)
         {
-            rend.material.color = Color.blue;
-        }
-        else if (uiController.Color == Convert.ToInt32(DropdownColor.Red) && rend.material.color != Color.red)
-        {
-            rend.material.color = Color.red;
-        }
-        else if (uiController.Color == Convert.ToInt32(DropdownColor.Green) && rend.material.color != Color.green)
-        {
-            rend.material.color = Color.green;
+            if (uiController.Color == Color.blue)
+            {
+                rend.material.color = Color.blue;
+            }
+            else if (uiController.Color == Color.red)
+            {
+                rend.material.color = Color.red;
+            }
+            else if (uiController.Color == Color.green)
+            {
+                rend.material.color = Color.green;
+            }
+            currentColor = rend.material.color;
         }
 	}
 }
