@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ColorController.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\ShapeController.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/ajk/CMPM121_Homework_1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

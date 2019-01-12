@@ -20,6 +20,12 @@ public class UIController : MonoBehaviour
     private Slider yScaleSlider;
     private Slider zScaleSlider;
 
+    // color
+    private Dropdown colorDropdown;
+
+    // shape
+    private Dropdown shapeDropdown;
+
     public Vector3 Position
     {
         get { return new Vector3(xPositionSlider.value, yPositionSlider.value, zPositionSlider.value); }
@@ -37,27 +43,36 @@ public class UIController : MonoBehaviour
 
     public int Color 
     {
-        get { return GameObject.Find("Color").GetComponent<Dropdown>().value; }
+        get { return colorDropdown.value; }
     }
 
     public int Shape
     {
-        get { return GameObject.Find("Shape").GetComponent<Dropdown>().value; }
+        get { return shapeDropdown.value; }
     }
 
 	void Start () 
     {
+        // position
         xPositionSlider = GameObject.Find("xPos").GetComponent<Slider>();
         yPositionSlider = GameObject.Find("yPos").GetComponent<Slider>();
         zPositionSlider = GameObject.Find("zPos").GetComponent<Slider>();
 
+        // rotation
         xRotationSlider = GameObject.Find("xRotation").GetComponent<Slider>();
         yRotationSlider = GameObject.Find("yRotation").GetComponent<Slider>();
         zRotationSlider = GameObject.Find("zRotation").GetComponent<Slider>();
 
+        // scale
         xScaleSlider = GameObject.Find("xScale").GetComponent<Slider>();
         yScaleSlider = GameObject.Find("yScale").GetComponent<Slider>();
         zScaleSlider = GameObject.Find("zScale").GetComponent<Slider>();
+
+        // color
+        colorDropdown = GameObject.Find("Color").GetComponent<Dropdown>();
+
+        // shape
+        shapeDropdown = GameObject.Find("Shape").GetComponent<Dropdown>();
 	}
 	
 	void Update () 
