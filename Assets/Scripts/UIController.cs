@@ -45,7 +45,7 @@ public class UIController : MonoBehaviour
     // auto pilot
     private Toggle autoPilotToggle;
     private float nextActionTime = 0.0f;
-    private float period = 1.0f;
+    private float period = 1.2f;
     private float lerpSpeed = 0.02f;
     private Vector3 randomPosition;
     private Vector3 randomRotation;

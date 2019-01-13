@@ -3,28 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour 
+public class Movement : MonoBehaviour
 {
     private UIController uiController;
-    private float movement = 0.1f;
-    private float rotationSpeed = 1f;
     private float lerpSpeed = 0.02f;
 
     private Vector3 RoundVector(Vector3 input, int place)
     {
         return new Vector3(
-            Convert.ToSingle(Math.Round(input.x, place)),  
-            Convert.ToSingle(Math.Round(input.y, place)), 
-            Convert.ToSingle(Math.Round(input.z, place)) 
+            Convert.ToSingle(Math.Round(input.x, place)),
+            Convert.ToSingle(Math.Round(input.y, place)),
+            Convert.ToSingle(Math.Round(input.z, place))
         );
     }
 
-	void Start () 
+    void Start()
     {
         uiController = GameObject.Find("UIController").GetComponent<UIController>();
-	}
-	
-	void Update () 
+    }
+
+    void Update()
     {
         if (uiController.SmoothMovement)
         {
@@ -42,5 +40,5 @@ public class Movement : MonoBehaviour
             transform.eulerAngles = uiController.Rotation;
             transform.localScale = uiController.Scale;
         }
-	}
+    }
 }
