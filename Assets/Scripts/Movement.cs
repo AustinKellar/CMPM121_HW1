@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     private UIController uiController;
     private float movement = 0.1f;
     private float rotationSpeed = 1f;
-    private float lerpSpeed = 0.01f;
+    private float lerpSpeed = 0.02f;
 
     private Vector3 RoundVector(Vector3 input, int place)
     {

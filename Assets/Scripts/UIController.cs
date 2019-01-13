@@ -175,11 +175,14 @@ public class UIController : MonoBehaviour
 
         // shape
         shapeDropdown.value = Convert.ToInt32(selectedConfiguration.shape);
+
+        // smooth movement
+        smoothMovementToggle.isOn = selectedConfiguration.smoothMovement;
     }
 
     void ClickSave()
     {
-        configurations.Add(new Configuration(Position, Rotation, Scale, Color, Shape));
+        configurations.Add(new Configuration(Position, Rotation, Scale, Color, Shape, SmoothMovement));
         loadDropdown.AddOptions(new List<string> { "Configuration " + configurations.Count });
     }
 
@@ -190,14 +193,16 @@ public class UIController : MonoBehaviour
         public Vector3 scale;
         public Color color;
         public ShapeOption shape;
+        public bool smoothMovement;
 
-        public Configuration(Vector3 position, Vector3 rotation, Vector3 scale, Color color, ShapeOption shape)
+        public Configuration(Vector3 position, Vector3 rotation, Vector3 scale, Color color, ShapeOption shape, bool smoothMovement)
         {
             this.position = position;
             this.rotation = rotation;
             this.scale = scale;
             this.color = color;
             this.shape = shape;
+            this.smoothMovement = smoothMovement;
         }
     }
 }
