@@ -23,10 +23,7 @@ public class Movement : MonoBehaviour
     {
         if (uiController.SmoothMovement)
         {
-            if (transform.position != uiController.Position)
-            {
-                transform.position = Vector3.Lerp(transform.position, uiController.Position, lerpSpeed);
-            }
+            transform.position = Vector3.Lerp(transform.position, uiController.Position, lerpSpeed);     
         }
         else
         {
@@ -40,10 +37,7 @@ public class Movement : MonoBehaviour
         {
             var target = new Quaternion();
             target.eulerAngles = uiController.Rotation;
-            if (transform.rotation != target)
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, target, lerpSpeed);
-            }
+            transform.rotation = Quaternion.Lerp(transform.rotation, target, lerpSpeed);
         }
         else
         {
@@ -53,7 +47,7 @@ public class Movement : MonoBehaviour
 
     private void UpdateScale()
     {
-        if (uiController.Scale != transform.localScale)
+        if (uiController.SmoothMovement)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, uiController.Scale, lerpSpeed);
         }
