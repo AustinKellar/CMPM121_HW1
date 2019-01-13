@@ -19,44 +19,6 @@ public class Movement : MonoBehaviour
         );
     }
 
-    private void UpdatePosition()
-    {
-        if (uiController.SmoothMovement)
-        {
-            transform.position = Vector3.Lerp(transform.position, uiController.Position, lerpSpeed);     
-        }
-        else
-        {
-            transform.position = uiController.Position;
-        }
-    }
-
-    private void UpdateRotation()
-    {
-        if (uiController.SmoothMovement)
-        {
-            var target = new Quaternion();
-            target.eulerAngles = uiController.Rotation;
-            transform.rotation = Quaternion.Lerp(transform.rotation, target, lerpSpeed);
-        }
-        else
-        {
-            transform.eulerAngles = uiController.Rotation;
-        }
-    }
-
-    private void UpdateScale()
-    {
-        if (uiController.SmoothMovement)
-        {
-            transform.localScale = Vector3.Lerp(transform.localScale, uiController.Scale, lerpSpeed);
-        }
-        else
-        {
-            transform.localScale = uiController.Scale;
-        }
-    }
-
 	void Start () 
     {
         uiController = GameObject.Find("UIController").GetComponent<UIController>();
@@ -64,8 +26,21 @@ public class Movement : MonoBehaviour
 	
 	void Update () 
     {
-        UpdatePosition();
-        UpdateRotation();
-        UpdateScale();
+        if (uiController.SmoothMovement)
+        {
+            transform.position = Vector3.Lerp(transform.position, uiController.Position, lerpSpeed);
+
+            var target = new Quaternion();
+            target.eulerAngles = uiController.Rotation;
+            transform.rotation = Quaternion.Lerp(transform.rotation, target, lerpSpeed);
+
+            transform.localScale = Vector3.Lerp(transform.localScale, uiController.Scale, lerpSpeed);
+        }
+        else
+        {
+            transform.position = uiController.Position;
+            transform.eulerAngles = uiController.Rotation;
+            transform.localScale = uiController.Scale;
+        }
 	}
 }
