@@ -32,30 +32,44 @@ public class ShapeController : MonoBehaviour
         var selectedShape = uiController.Shape;
         if (selectedShape != currentShape)
         {
+            Transform prevTransform;
             if (currentShape == UIController.ShapeOption.Cube)
             {
+                prevTransform = cube.transform;
                 cube.SetActive(false);
             }
             else if (currentShape == UIController.ShapeOption.Sphere)
             {
+                prevTransform = sphere.transform;
                 sphere.SetActive(false);
             }
-            else if (currentShape == UIController.ShapeOption.Capsule)
+            else 
             {
+                prevTransform = capsule.transform;
                 capsule.SetActive(false);
             }
 
             if (selectedShape == UIController.ShapeOption.Cube)
             {
                 cube.SetActive(true);
+                cube.transform.position = prevTransform.position;
+                cube.transform.rotation = prevTransform.rotation;
+                cube.transform.localScale = prevTransform.localScale;
+
             }
             else if (selectedShape == UIController.ShapeOption.Sphere)
             {
                 sphere.SetActive(true);
+                sphere.transform.position = prevTransform.position;
+                sphere.transform.rotation = prevTransform.rotation;
+                sphere.transform.localScale = prevTransform.localScale;
             }
             else if (selectedShape == UIController.ShapeOption.Capsule)
             {
                 capsule.SetActive(true);
+                capsule.transform.position = prevTransform.position;
+                capsule.transform.rotation = prevTransform.rotation;
+                capsule.transform.localScale = prevTransform.localScale;
             }
 
             currentShape = selectedShape;

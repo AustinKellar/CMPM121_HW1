@@ -39,6 +39,9 @@ public class UIController : MonoBehaviour
     private Button saveButton;
     private List<Configuration> configurations;
 
+    //  smooth movement
+    private Toggle smoothMovementToggle;
+
     public Vector3 Position
     {
         get { return new Vector3(xPositionSlider.value, yPositionSlider.value, zPositionSlider.value); }
@@ -92,6 +95,11 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public bool SmoothMovement
+    {
+        get { return smoothMovementToggle.isOn; }
+    }
+
 	void Start () 
     {
         // position
@@ -122,6 +130,9 @@ public class UIController : MonoBehaviour
         loadButton.onClick.AddListener(ClickLoad);
         saveButton.onClick.AddListener(ClickSave);
         configurations = new List<Configuration>();
+
+        // smooth movement
+        smoothMovementToggle = GameObject.Find("Smooth Movement").GetComponent<Toggle>();
 	}
 	
 	void ClickLoad()
